@@ -8,12 +8,45 @@ BODY{
     height: 100vh;
     display: flex;
     background: lightblue;
-    /* align-items: center; */
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-/* IMG{
-    width: 40px ;
-} */
+HEADER{
+    text-align: center;
+    /* margin: auto; */
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+}
+
+.span_timer{
+    border: solid 1px grey;
+    border-radius: 7px;
+    padding: 4px 4px 4px 8px;
+    background: #eeeeee;
+}
+
+#minutes, #seconds{
+    color: blue;
+}
+
+.btn_start{
+    width: 200px;
+    cursor: pointer;
+    background: #44e7e77a;
+    border: solid 1px grey;
+    border-radius: 7px;
+    padding: 5px;
+    transition: box-shadow 0.2s;
+}
+
+.btn_start:hover{
+    box-shadow: 3px 3px 6px #353434;
+    /* box-shadow: 3px 3px 12px grey; */
+}
+
 
 .m_game{
     border: solid 1px white;
@@ -21,7 +54,8 @@ BODY{
     box-shadow: 3px 3px 12px grey;
     width: 640px;
     height: 640px;
-    margin: auto;
+    /* margin: auto; */
+    margin: 60px auto auto;
     display: flex;
     flex-wrap: wrap;
     
@@ -70,4 +104,50 @@ BODY{
 
 .front{
     transform: rotateY(180deg);
+}
+
+.msg_overlay{
+    display: none;
+    opacity: 0;
+    position: absolute; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    /* background: rgba(0, 0, 0, 0.8); */
+    text-align: center; 
+    transition: opacity 1s;
+}
+
+.msg_overlay_show{
+    opacity: 1;
+}
+
+.bg_video{
+    z-index: -1; 
+    position: fixed; 
+    right: 0; 
+    bottom: 0; 
+    min-width: 100%; 
+    min-height: 100%;
+}
+
+.msg_overlay_content{
+    z-index: 111;
+    margin: 40px auto; 
+    padding: 200px; 
+    width: 640px; 
+    height: 660px; 
+    text-align: center; 
+    font-weight: bold; 
+    border: solid 6px green; 
+    background: #fff; 
+    border-radius: 7px;
+}
+
+.btn_overlay{
+    margin-top:40px;    
+} 
+
+.force_display{
+    display: block !important;
 }

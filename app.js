@@ -1,13 +1,17 @@
 // get all cards in the table
-const cards = document.querySelectorAll('.card');
-
-// shuffle the cards
-shuffleCards();
-
+const cards =           document.querySelectorAll('.card');
+const elmWrongGuesses = document.getElementById('elmWrongGuesses');
+const elmMsgOverlay =   document.getElementById('msgOverlay');
 
 let disableClicking = false;
 let isCardFlipped = false;
 let firstCard, secondCard;
+
+let wrongGuesses = 0;
+let successCounter = 0;
+
+// shuffle the cards
+shuffleCards();
 
 function flipCard(){
     // board is locked to clicking while action on 2 cards
@@ -49,7 +53,6 @@ function checkForMatching(){
         // cards are NOT matching 
         // anable flipping again
         anableCardsFlipping();
-    
 }
 
 
@@ -67,11 +70,26 @@ function disableCardsFlipping(){
         resetParams();
     }, 1500);
 
+    // count success flips => if won the game, show overlay with fadeIn
+    successCounter++;
+    if (successCounter == 6){
+        console.log("successCounter ", successCounter);
+        successCounter = 0;
+        // first display block (overlay still in opacity 0)
+        elmMsgOverlay.classList.add('force_display');
+        // now with transition animation change opacity gradually
+        setTimeout(() => {
+            elmMsgOverlay.classList.add('msg_overlay_show');
+        }, 1500);
 
+        console.log("elmMsgOverlay: ", elmMsgOverlay);
+    }
 }
   
 // anable flipping again => remove flip class to reset flipping
 function anableCardsFlipping(){
+    displayWrongGuesses();
+
     // disable clicking to prevent bugs while clicking too many cards at once. 
     // only 2 cards are allowed every turn
     disableClicking = true;
@@ -105,6 +123,14 @@ function shuffleCards(){
 }
 
 
+function displayWrongGuesses(){
+    wrongGuesses++;
+    elmWrongGuesses.innerHTML = wrongGuesses;
+}
+
+
 // add event listeners to each card
 cards.forEach(card => card.addEventListener('click', flipCard));
+
+
 

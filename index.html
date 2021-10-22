@@ -11,7 +11,28 @@
 
 </head>
 <body>
-    
+
+    <header>
+        <!-- wrong guesses -->
+        <span>
+            Wrong guesses: <span id="elmWrongGuesses">0</span>
+        </span>
+        
+        <<>>
+
+        <!-- timer -->
+        <span class="span_timer">
+            TIMER: 
+            <label id="minutes">00</label>:<label id="seconds">00</label>
+        </span>
+        
+        &nbsp;<<>>
+        
+        <!-- restart new game -->
+        <button class="btn_start" onclick="startNewGame()" title="Start a new game">New Game</button>
+    </header>
+
+    <!-- game board -->
     <div class="m_game">
         <div class="card" data-info="Angular">
             <img src="img/angular.svg" class="front" />
@@ -64,8 +85,23 @@
         
     </div>
 
-    <script src="app.js"></script>
+    <!-- overlayer -->
+    <div id="msgOverlay" class="msg_overlay">
+        
+        <video autoplay muted loop class="bg_video">
+            <source src="img/bg_confetti.mp4" type="video/mp4">
+        </video>
 
+        <div class="msg_overlay_content">
+            YOU WON!!
+            <br />
+            <!-- restart new game -->
+            <button class="btn_start btn_overlay" onclick="startNewGame()" title="Start a new game">New Game</button>
+        </div>
+    </div>
+
+    <script src="timer.js"></script>
+    <script src="app.js"></script>
 
 </body>
 </html>
