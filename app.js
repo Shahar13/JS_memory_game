@@ -1,6 +1,10 @@
 // get all cards in the table
 const cards = document.querySelectorAll('.card');
 
+// // shuffle the cards
+// shuffleCards();
+
+
 let disableClicking = false;
 let isCardFlipped = false;
 let firstCard, secondCard;
@@ -58,10 +62,12 @@ function disableCardsFlipping(){
     setTimeout(() => {
         firstCard.innerHTML = '';
         secondCard.innerHTML = '';
+        
+        // reset params to be ready for the next round
+        resetParams();
     }, 1500);
 
-    // reset params to be ready for the next round
-    resetParams();
+
 }
   
 // anable flipping again => remove flip class to reset flipping
@@ -89,6 +95,15 @@ function anableCardsFlipping(){
 function resetParams(){
     [isCardFlipped, disableClicking, firstCard, secondCard] = [false, false, null, null];
 }
+
+
+(function shuffleCards(){
+    cards.forEach(card => {
+        let randPosition = Math.floor(Math.random() * 12);
+        card.style.order = randPosition;
+    })
+})()
+
 
 // add event listeners to each card
 cards.forEach(card => card.addEventListener('click', flipCard));
