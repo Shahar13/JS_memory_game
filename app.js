@@ -70,6 +70,7 @@ function disableCardsFlipping(){
         resetParams();
     }, 1500);
 
+    // ON WINNING
     // count success flips => if won the game, show overlay with fadeIn
     successCounter++;
     if (successCounter == 6){
@@ -82,7 +83,7 @@ function disableCardsFlipping(){
             elmMsgOverlay.classList.add('msg_overlay_show');
         }, 1500);
 
-        console.log("elmMsgOverlay: ", elmMsgOverlay);
+        // console.log("elmMsgOverlay: ", elmMsgOverlay);
     }
 }
   
